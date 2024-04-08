@@ -27,12 +27,12 @@ const App = () => {
   const filterContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()));
 
   return (
-    <>
+    <div className='app'>
       <h1>Phonebook</h1>
       <ContactForm onAdd ={addContact} />
       <SearchBox value={filter} onFilter={ setFilter } />
       <ContactList contacts={filterContacts} onDelete={deleteContact} />
-    </>)
+    </div>)
 };
 
 
