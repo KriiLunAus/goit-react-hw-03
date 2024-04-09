@@ -15,3 +15,9 @@
 .addFormChildren > label {
   text-align: left;
 }
+
+.error {
+  color: red;
+  margin: 2px;
+  text-align: left;
+}

@@ -1,7 +1,6 @@
 import { IoPerson } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import css from "./Contact.module.css";
-// import { MdLocalPhone } from "react-icons/md";
 const Contact = ({ id, name, number, onDelete }) => {
     return (<>
         <li id={id} className={css.contact}>
