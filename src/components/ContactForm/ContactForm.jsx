@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import {object, string, mixed} from "yup";
+import {object, string, number, mixed} from "yup";
 import css from "./ContactForm.module.css"
 const ContactForm = ({ onAdd }) => {
 
@@ -21,12 +21,12 @@ const initialValues = {
             .typeError("Type numbers")
             .required("Required")
             .test(
-                "'is-between-3-and-50-digits'", // if false
-                "Must be between 3 and 50 characters",  // if less then 3 or grater then 50
+                "is-between-3-and-50-digits", // 
+                "Fill like this: XXX-XX-XX",  // if less then 3 or grater then 50
                 value => {
                     if (!value) return false;
                     const stringValue = value.toString();
-                    return stringValue.length >= 3 && stringValue.length <= 50;
+                    return stringValue.length >= 3 && stringValue.length <= 50 && /^\d{3}-\d{2}-\d{2}$/.test(stringValue);
                 }
 
             )
@@ -52,13 +52,13 @@ const initialValues = {
 
             <div className={css.addFormChildren}>
                 <label htmlFor={nameFieldId}>Name</label>
-                <Field id={nameFieldId} name="name" type="text" required />
+                <Field id={nameFieldId} name="name" type="text"  />
                 <ErrorMessage name="name" component="p" className={css.error} />
             </div>
                     
             <div className={css.addFormChildren}>
                 <label htmlFor={numberFieldId}>Number</label>
-                <Field id={numberFieldId} name="number" type="text" required />
+                <Field id={numberFieldId} name="number" type="text"  />
                 <ErrorMessage name="number" component="p" className={css.error} />
             </div>
                 <button type="submit">Add contact</button>
